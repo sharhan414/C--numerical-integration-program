@@ -14,7 +14,7 @@
 #include <QTextDocumentFragment>
 #include <qiterator.h>
 #include <QString>
-#include "libs/mathexpressions.h"
+#include <MathExpCalcLib/mathexpressions.h>+
 MyTextEdit::MyTextEdit(QWidget*w):QTextEdit(w)
 {
     this->verticalScrollBar()->grabGesture(Qt::GestureType::SwipeGesture);
@@ -43,10 +43,12 @@ void MyTextEdit::slotKoren()//принимает квадратный корен
         {
             cursor.insertText("×√(");
         }
-    else
-        cursor.insertText("√(");
-    this->setTextCursor(cursor);
-}
+        else
+        {
+            cursor.insertText("√(");
+        }
+        this->setTextCursor(cursor);
+    }
 
 }
 
@@ -61,10 +63,11 @@ void MyTextEdit::slotNKoren()//принимает умножение
             cursor.insertText("×()/√(");
         }
         else
+        {
             cursor.insertText("()/√(");
-        this->setTextCursor(cursor);
+        }
+            this->setTextCursor(cursor);
     }
-
 }
 void MyTextEdit::slotPlusMinus()//принимаеть + -
 {
@@ -73,7 +76,9 @@ void MyTextEdit::slotPlusMinus()//принимаеть + -
     auto cursor=this->textCursor();
     QString text=this->toPlainText();
     if( ButTExt=="+" && (cursor.atStart() || (cursor.position() > 0 && text[cursor.position()-1]=="(")))
+    {
         return;
+    }
 
     if(ButTExt=="-")
     {
@@ -91,7 +96,9 @@ void MyTextEdit::slotPlusMinus()//принимаеть + -
     }
 
     if(ProvStavArifDey())
+    {
         cursor.insertText(ButTExt);
+    }
 
     this->setTextCursor(cursor);
 }
@@ -139,7 +146,9 @@ void MyTextEdit::slotVStepenN()
 {
     auto cursor=this->textCursor();
     if(ProvStavSimvolov())
+    {
         cursor.insertText(tr("^("));
+    }
 
     this->setTextCursor(cursor);
 }
@@ -154,7 +163,9 @@ void MyTextEdit::slotPi()//принимает число  ПИ
             cursor.insertText("×π");
         }
         else
+        {
             cursor.insertText("π");
+        }
         this->setTextCursor(cursor);
     }
 }
@@ -208,8 +219,11 @@ void MyTextEdit::slotProcent()//принимает проченты % -% +%
             auto cursor=this->textCursor();
             auto str=this->toPlainText();
             auto position=cursor.position();
+
             if(!str.isEmpty() && str.size()>position)
+            {
                 qDebug()<<"str Cursot position="<<str[position];
+            }
 
             if(qFind(Simvols.begin(),Simvols.end(),str[position])!=Simvols.end())
                 qDebug()<<"ravno end";

@@ -27,10 +27,10 @@ private:
     double getMethodLeftRectsIsNStep(int step_n);
     double getMethodRightRectsIsNStep(int step_n);
     double getMethodSimsonaIsNStep(int step_n);
-    double a,b,accuracy;
-    bool not_accuracy;
-    int n;
-    std::string str_func;
+    double m_a,m_b,m_accuracy;
+    bool m_notAccuracy;
+    int m_n;
+    std::string m_strFunc;
 };
 
 #endif // CHISLENINTEGRALL_H

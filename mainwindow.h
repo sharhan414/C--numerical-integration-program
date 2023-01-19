@@ -23,6 +23,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    MyTextEdit* InputFuncEdit;
+    MyTextEdit* m_InputFuncEdit;
 };
 #endif // MAINWINDOW_H

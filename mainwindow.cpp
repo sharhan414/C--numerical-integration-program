@@ -4,7 +4,7 @@
 #include <QDebug>
 #include <QMessageBox>
 #include "chislenintegrall.h"
-#include <libs/mathexpressions.h>
+#include <MathExpCalcLib/mathexpressions.h>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -24,54 +24,54 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->SpinBox_epsilon->setDecimals(3);
     ui->SpinBox_epsilon->setSingleStep(0.001);
-    InputFuncEdit=new MyTextEdit(this);
-    //InputFuncEdit->setReadOnly(true);
-    InputFuncEdit->setGeometry(15,80,width()-30,110);
+    m_InputFuncEdit=new MyTextEdit(this);
+    //m_m_InputFuncEdit->setReadOnly(true);
+    m_InputFuncEdit->setGeometry(15,80,width()-30,110);
     QFont font;
     font.setPointSize(18);
-    InputFuncEdit->setFont(font);
+    m_InputFuncEdit->setFont(font);
 
-    connect(ui->Button_0,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotValues()));
-    connect(ui->Button_1,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotValues()));
-    connect(ui->Button_2,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotValues()));
-    connect(ui->Button_3,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotValues()));
-    connect(ui->Button_4,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotValues()));
-    connect(ui->Button_5,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotValues()));
-    connect(ui->Button_6,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotValues()));
-    connect(ui->Button_7,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotValues()));
-    connect(ui->Button_8,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotValues()));
-    connect(ui->Button_9,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotValues()));
+    connect(ui->Button_0,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotValues()));
+    connect(ui->Button_1,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotValues()));
+    connect(ui->Button_2,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotValues()));
+    connect(ui->Button_3,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotValues()));
+    connect(ui->Button_4,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotValues()));
+    connect(ui->Button_5,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotValues()));
+    connect(ui->Button_6,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotValues()));
+    connect(ui->Button_7,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotValues()));
+    connect(ui->Button_8,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotValues()));
+    connect(ui->Button_9,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotValues()));
 
-    connect(ui->Button_plus,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotPlusMinus()));
-    connect(ui->Button_minus,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotPlusMinus()));
-    connect(ui->Button_multipl,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotUmn()));
-    connect(ui->Button_division,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotDl()));
+    connect(ui->Button_plus,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotPlusMinus()));
+    connect(ui->Button_minus,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotPlusMinus()));
+    connect(ui->Button_multipl,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotUmn()));
+    connect(ui->Button_division,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotDl()));
 
-    connect(ui->Button_factorials,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotFactorial()));
-    connect(ui->Button_pow_2,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotVStepen2()));
-    connect(ui->Button_pow_n,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotVStepenN()));
+    connect(ui->Button_factorials,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotFactorial()));
+    connect(ui->Button_pow_2,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotVStepen2()));
+    connect(ui->Button_pow_n,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotVStepenN()));
 
-    connect(ui->Button_sin,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotTrigFunc()));
-    connect(ui->Button_cos,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotTrigFunc()));
+    connect(ui->Button_sin,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotTrigFunc()));
+    connect(ui->Button_cos,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotTrigFunc()));
 
-    connect(ui->Button_point,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotPoint()));
-    connect(ui->Button_deleted,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotDeleteChar()));
-    connect(ui->Button_clear,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotCE()));
+    connect(ui->Button_point,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotPoint()));
+    connect(ui->Button_deleted,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotDeleteChar()));
+    connect(ui->Button_clear,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotCE()));
 
-    connect(ui->Button_sqrt,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotKoren()));
-    connect(ui->Button_sqrt_n,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotNKoren()));
+    connect(ui->Button_sqrt,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotKoren()));
+    connect(ui->Button_sqrt_n,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotNKoren()));
 
-    connect(ui->Button_ln,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotLog()));
-    connect(ui->Button_log,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotLog()));
+    connect(ui->Button_ln,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotLog()));
+    connect(ui->Button_log,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotLog()));
 
-    connect(ui->Button_opens_bracket,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotScobs()));
-    connect(ui->Button_closes_bracket,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotScobs()));
+    connect(ui->Button_opens_bracket,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotScobs()));
+    connect(ui->Button_closes_bracket,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotScobs()));
 
-    connect(ui->Button_e,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotE()));
+    connect(ui->Button_e,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotE()));
 
     connect(ui->Button_receive,SIGNAL(clicked(bool)),this,SLOT(slotRefIntegrall()));
 
-    connect(ui->Button_x,SIGNAL(clicked(bool)),InputFuncEdit,SLOT(slotX()));
+    connect(ui->Button_x,SIGNAL(clicked(bool)),m_InputFuncEdit,SLOT(slotX()));
 
 }
 
@@ -108,7 +108,7 @@ void MainWindow::on_Button_receive_clicked()
     double b=ui->SpinBox_b->value();
     double e=ui->SpinBox_epsilon->value();
     int n=ui->spinBox_n->value();
-    QString func=InputFuncEdit->toPlainText();
+    QString func=m_InputFuncEdit->toPlainText();
     if(func.isEmpty())
     {
         QMessageBox ms;
@@ -117,7 +117,9 @@ void MainWindow::on_Button_receive_clicked()
         ms.exec();
         return;
     }
+
     MathExpressions::ReplacingSigns(func);
+
 //    Resh::Zamena(func);
     if(ui->checkBox_accuracy->isChecked() and e==0.0)//отмечень ли
     {

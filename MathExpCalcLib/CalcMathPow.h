@@ -1,12 +1,14 @@
 #ifndef POW_H
 #define POW_H
-#include "resheniy.h"
+#include "MathExpFunction.h"
 
-class Pow:public Resheniy
+class CalcMathPow:public MathExpFunction
 {
 public:
-    Pow();
+    CalcMathPow();
+    virtual ~CalcMathPow(){}
 
+    bool calculate(std::string& mathExp) override;
     void CalculatePow(std::string&);
 private:
     std::string resheniya(std::string& StrBeginValue,std::string&StrEndValue);

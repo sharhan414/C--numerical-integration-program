@@ -1,7 +1,8 @@
 #include "solvfunction.h"
 //#include <resh.h>
 #include <QString>
-#include <libs/mathexpressions.h>
+#include <MathExpCalcLib/MathExpFunction.h>
+#include <MathExpCalcLib/mathexpressions.h>
 SolvFunction::SolvFunction(std::string added_func)
 {
     func=added_func;
@@ -11,7 +12,7 @@ std::string SolvFunction::addValuesToFunc(double values)
 {
     std::string temporary_func=func;
 
-    std::string str_values=Resheniy::to_stdString(values);
+    std::string str_values=MathExpFunction::to_stdString(values);
     auto it=temporary_func.begin();
 
     while(it!=temporary_func.end())

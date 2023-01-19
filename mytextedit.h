@@ -14,36 +14,35 @@ private:
 
     QString text;
 
-
-   bool ProvStavPoint();
-   bool ProvStavArifDey();
-   bool ProvStavSimvolov();
-   bool ProvNeedStavUmn();
+    bool ProvStavPoint();
+    bool ProvStavArifDey();
+    bool ProvStavSimvolov();
+    bool ProvNeedStavUmn();
 
 public slots:
-   void slotKoren();
-   void slotNKoren();
-   void slotUmn();
-   void slotDl();
+    void slotKoren();
+    void slotNKoren();
+    void slotUmn();
+    void slotDl();
 
-   void slotFactorial();
+    void slotFactorial();
     void slotVStepen2();
-     void slotVStepenN();
-      void slotPi();
-      void slotE();
+    void slotVStepenN();
+    void slotPi();
+    void slotE();
 
-      void slotValues();
-      void slotPlusMinus();
-      void slotProcent();
-      void slotTrigFunc();
-      void slotPoint();
+    void slotValues();
+    void slotPlusMinus();
+    void slotProcent();
+    void slotTrigFunc();
+    void slotPoint();
 
-      void slotDeleteChar();
-       void slotCE();
-       void slotScobs();
-       void slotX();
-void slotLog();
+    void slotDeleteChar();
+    void slotCE();
+    void slotScobs();
+    void slotX();
+    void slotLog();
 
-void slot_ravno();
+    void slot_ravno();
 };
 #endif // MYTEXTEDIT_H
